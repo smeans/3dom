@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>dom3d -- Show a page's DOM tree exploded into 3 dimensions.</title>
+        <meta name="description" content="Show a page's DOM tree exploded into 3 dimensions.">
+        <meta name="author" content="Scott Means for LinkedIn Learning">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            html, body {
+                font-family: sans-serif;
+                height: 100%;
+            }
+
+            main {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                width: 100%;
+                height: 100%;
+            }
+
+            #input {
+                display: flex;
+                min-height: 45vh;
+            }
+
+            #input>* {
+                flex-grow: 1;
+                width: 50%;
+                height: 100%;
+            }
+
+            div.controls {
+                display: flex;
+                width: 100%;
+            }
+
+            div.controls input {
+                flex-grow: 1;
+            }
+
+            iframe {
+                width: 100%;
+                height: 40vh;
+            }
+
+            canvas {
+                width: 100%;
+                height: 45vh;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div id="input">
+                <textarea name="source"></textarea>
+                <iframe></iframe>
+            </div>
+            <canvas></canvas>
+        </main>
+
+        <script src="js/three.js"></script>
+        <script type="module" src="js/OrbitControls.js"></script>
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>
