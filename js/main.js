@@ -73,7 +73,7 @@ function cameraOnMesh(mesh) {
 
     const aspect = canvas.offsetWidth/canvas.offsetHeight;
 
-    const camera = new THREE.PerspectiveCamera(FOV_DEGREES, aspect, 0.1, zOffset*2);
+    const camera = new THREE.PerspectiveCamera(FOV_DEGREES, aspect, 0.1, zOffset*10);
     camera.position.z = zOffset;
 
     return camera;
@@ -106,13 +106,25 @@ function addElementToScene(el, level) {
     currentScene.add(shape);
 }
 
+function countParents(el) {
+    let c = 0;
+
+    while (el.parentElement) {
+        el = el.parentElement;
+        c++;
+    }
+
+    return c;
+}
+
 function renderNextElement() {
     if (!renderStack.length) {
         return;
     }
 
     const nextElement = renderStack.pop();
-    const level = renderStack.length + 1;
+    const level = countParents(nextElement);
+    console.log(level, nextElement);
 
     addElementToScene(nextElement, level);
 
@@ -126,7 +138,7 @@ function renderNextElement() {
 }
 
 let lastElementRenderTime;
-let renderDelayMs = 20.0;
+let renderDelayMs = 200.0;
 
 function resizeRendererToDisplaySize() {
   const pixelRatio = window.devicePixelRatio;
