@@ -50,6 +50,36 @@
                 width: 100%;
                 height: 45vh;
             }
+
+            .fullscreen canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .fullscreen-icon {
+                position: absolute;
+                right: 2em;
+                bottom: 2em;
+            }
+
+            .fullscreen-icon *.close {
+                display: none;
+            }
+
+            .fullscreen .fullscreen-icon *.open {
+                display: none;
+            }
+
+            .fullscreen .fullscreen-icon *.close {
+                display: inherit;
+            }
+
+            .fullscreen-icon svg {
+                fill: #fff8;
+            }
         </style>
     </head>
     <body>
@@ -59,6 +89,10 @@
                 <iframe></iframe>
             </div>
             <canvas></canvas>
+            <div class="fullscreen-icon">
+                <svg class="open" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><polygon points="21,11 21,3 13,3 16.29,6.29 6.29,16.29 3,13 3,21 11,21 7.71,17.71 17.71,7.71"/></svg>
+                <svg class="close" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M22,3.41l-5.29,5.29L20,12h-8V4l3.29,3.29L20.59,2L22,3.41z M3.41,22l5.29-5.29L12,20v-8H4l3.29,3.29L2,20.59L3.41,22z"/></svg>
+            </div>
         </main>
 
         <script src="js/three.js"></script>

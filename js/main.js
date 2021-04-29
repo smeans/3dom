@@ -3,6 +3,7 @@ import { OrbitControls } from './OrbitControls.js';
 document.addEventListener('DOMContentLoaded', async (e) => {
     const iframe = document.querySelector('iframe');
     const source = document.querySelector('textarea');
+    const fullscreenIcon = document.querySelector('.fullscreen-icon');
 
     source.addEventListener('input', async (e) => {
         iframe.srcdoc = source.value;
@@ -12,6 +13,10 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     iframe.addEventListener('load', (e) => {
         refreshScene(e.target.contentDocument.body);
+    });
+
+    fullscreenIcon.addEventListener('click', (e) => {
+        document.body.classList.toggle('fullscreen');
     });
 
     initThree();
@@ -124,7 +129,6 @@ function renderNextElement() {
 
     const nextElement = renderStack.pop();
     const level = countParents(nextElement);
-    console.log(level, nextElement);
 
     addElementToScene(nextElement, level);
 
